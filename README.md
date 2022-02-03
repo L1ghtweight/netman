@@ -19,7 +19,7 @@ This script will notify the total internet usage of the user.
 5. You'll need a gmail account so that this script can use it for sending mail. 
 Using throwaway mail is highly recommended.
 Log into that account and enable less secure apps from [here](https://myaccount.google.com/lesssecureapps).
-6. Now, set the email and password variable `secrets.py` to the address and password of that gmail account. 
+6. Now, set the email and password variable in `secrets.py` to the address and password of that gmail account. 
 To be absolutely sure, go through the code and understand what this script is doing with your password.
 7. Now add IUT internet credentials in `credentials.json`
 8. Now run `python netman.py`
