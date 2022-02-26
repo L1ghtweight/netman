@@ -1,3 +1,5 @@
+#!/bin/python
+
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -7,6 +9,7 @@ from selenium.webdriver.chrome.service import Service
 import json
 
 import mail
+import send_mail
 
 import smtplib
 import ssl
@@ -48,16 +51,12 @@ def main(driver):
         for user in data:
             username, pwd = data[user]['username'], data[user]['password']
             email = data[user]['email']
-            print(username, email)
+            # print(username, email)
             usage = getMinutes(driver, username, pwd)
-
-            # print(username, usage)
             print(f"Usage of {username}: {usage}")
 
-            message = str(usage)
-
-            mail.sendMail(email, message)
-
+            send_mail.sendMail(email, username, usage)
+            
 
 if __name__ == "__main__":
 
@@ -65,7 +64,7 @@ if __name__ == "__main__":
     options.headless = True
     s = Service()
 
-    introMessage()
+    # introMessage()
 
     
     """ Starting chromedriver """
