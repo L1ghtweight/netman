@@ -4,7 +4,7 @@ from email.message import EmailMessage
 
 import secrets
 
-def sendMail(receiver_email, username, usage):
+def sendMail(receiver_email, username, usage, table=""):
     sender_email = secrets.email 
     password = secrets.password
 
@@ -17,12 +17,14 @@ def sendMail(receiver_email, username, usage):
     message["To"] = receiver_email
     message["Subject"] = subject
 
+    
     html = f"""
     <html>
         <body>
             <h1>{subject}</h1>
             <p>{body}</p>
-            <p>Your usage so far is {usage}</p>
+            <p>Your IUT internet usage so far is {usage}</p>
+            {table}
         </body>
     </html>
     """

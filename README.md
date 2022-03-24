@@ -1,5 +1,5 @@
 # IUT-net-manager
-We know how shitty IUT internet is. To survive, we need to have someone managing our net IDs.
+We know how shitty IUT internet is. To survive, we need to have someone managing out net IDs.
 This script will notify the total internet usage of the user.
 
 ---
