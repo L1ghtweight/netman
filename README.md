@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="" target="_blank"><img src="assets/screenshot.11.jpg" width="400"></a>
+    <a href="" target="_blank"><img src="assets/netman-logo.jpg" width="400"></a>
 </p>
 <p align="center">
     <a href=""><img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="python badge"></a>
