@@ -1,9 +1,17 @@
+<p align="center">
+    <a href="" target="_blank"><img src="assets/screenshot.11.jpg" width="400"></a>
+</p>
+<p align="center">
+    <a href=""><img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="python badge"></a>
+</p>
+
+
+
 ## About NETMAN
 We know how shitty IUT internet is. To survive, we need to have someone managing out net IDs.
 This script will notify the total internet usage of the user.
 
 ---
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
 ## Requirements and Installation
 1. Install `python 3.x` and `pip`
