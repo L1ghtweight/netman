@@ -1,8 +1,10 @@
 <p align="center">
-    <a href="" target="_blank"><img src="assets/netman-logo.jpg" width="400"></a>
+    <a href="" target="_blank"><img src="assets/netman-logo-2-cropped-reduced.png" width="400"></a>
 </p>
 <p align="center">
-    <a href=""><img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="python badge"></a>
+    <a href=""><img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="python badge" style="display:block;padding:5px"></a>
+    <a href=""><img src="https://img.shields.io/badge/-selenium-%43B02A?style=for-the-badge&logo=selenium&logoColor=white" alt="python badge" style="display:block;padding:5px"></a>
+    
 </p>
 
 
