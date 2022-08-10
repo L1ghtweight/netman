@@ -112,7 +112,7 @@ if __name__ == "__main__":
         send_mail.sendMail(person[1], person[0], person[2], html_table)
 
 
-    Send mail to 'not us' group
+    # Send mail to 'not us' group
     for person in notus:
         send_mail.sendMail(person[1],person[0],person[2])
     
