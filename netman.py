@@ -105,7 +105,6 @@ if __name__ == "__main__":
     main(driver)
 
     html_table = "<p>Usage of all people in 'us' list:<p>" + tabular_table.get_html_string(attributes={"border":"1", "style":"border-collapse: collapse; margin: 25px 0; font-size: 0.9em; font-family: sans-serif; min-width: 400px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);"})
-    print("The pretty table\n" + tabular_table.get_html_string() + "\n\n")
 
     # Send mail to 'us' group
     for person in us:
