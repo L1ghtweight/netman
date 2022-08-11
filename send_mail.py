@@ -33,12 +33,11 @@ def sendMail(receiver_email, username, usage, table=""):
 
     context = ssl.create_default_context()
 
-    print("Sending email to " + username, end=": ")
 
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(sender_email, password)
         server.sendmail(sender_email, receiver_email, message.as_string())
 
-    print("successful!")
+    print("Sending email to " + username + " seccessful")
 
