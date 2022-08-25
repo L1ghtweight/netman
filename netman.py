@@ -93,16 +93,13 @@ if __name__ == "__main__":
     # introMessage()
     
     driver = webdriver.Chrome(service = s, options = options)
-    print("Driver initiated..")
 
     print("Getting to iusers page..")
     driver.get("http://10.220.20.12/index.php/home/login")
-    print("Done!\n")
 
+    print("Getting usage...")
     table = main(driver)
     driver.quit()
-
-    print("\nDriver quitted.\n")
 
     # List of table formats
     # "plain" , "simple" , "github" , "grid" , "fancy_grid" , "pipe" , "orgtbl" , "jira"
@@ -110,7 +107,17 @@ if __name__ == "__main__":
     # "unsafehtml" , "latex" , "latex_raw" , "latex_booktabs" , "latex_longtable" , "textile" , "tsv"
     print(tabulate.tabulate(table, headers=["Username", "Usage"], tablefmt="pretty"))
 
-    html_table = "<p>Usage of all people in 'us' list:<p>" + tabular_table.get_html_string(attributes={"border":"1", "style":"border-collapse: collapse; margin: 25px 0; font-size: 0.9em; font-family: sans-serif; min-width: 400px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);"})
+    html_table = "<p>Usage of all people in 'us' list:<p>"
+
+    html_table += tabular_table.get_html_string(attributes={
+        "border": "1",
+        "style": """border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);"""
+    })
 
     # Send mail to 'us' group
     for person in us:
