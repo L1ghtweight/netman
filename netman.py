@@ -1,9 +1,11 @@
 #!/bin/python
 
+import os
 import threading
 import json
 import smtplib
 import ssl
+import tabulate
 from getpass import getpass
 from prettytable import PrettyTable
 from selenium import webdriver
@@ -22,6 +24,7 @@ tabular_fields = ["Username", "Usage"]
 tabular_table = PrettyTable()
 tabular_table.field_names = tabular_fields 
 
+
 def introMessage():
 
     print()
@@ -35,7 +38,11 @@ def introMessage():
 
     print()
 
+
 def getMinutes(driver, username, pwd):
+
+    # default value, necessary to avoid unbounded variable issue
+    minutes = "000000"
     try:
         driver.find_element(By.XPATH, ("/html/body/div/div/form/div[1]/div/input")).send_keys(username)
         # print("Inserted username..")
@@ -58,6 +65,8 @@ def main(driver):
     with open("credentials.json", "r") as credentials:
         data = json.load(credentials)
 
+        table = []
+
         for user in data:
 
             username, pwd = data[user]['username'], data[user]['password']
@@ -70,8 +79,10 @@ def main(driver):
             else:
                 notus.append([username, email, usage])
 
-            print(f"Usage of {username}: {usage}")
+            entry = [username, usage]
+            table.append(entry)
 
+    return table
 
 if __name__ == "__main__":
 
@@ -86,19 +97,23 @@ if __name__ == "__main__":
 
     print("Getting to iusers page..")
     driver.get("http://10.220.20.12/index.php/home/login")
-    print("Done!\n\n")
+    print("Done!\n")
 
-    main(driver)
-
+    table = main(driver)
     driver.quit()
-    print("\n\nDriver quitted.\n")
+
+    print("\nDriver quitted.\n")
+
+    # List of table formats
+    # "plain" , "simple" , "github" , "grid" , "fancy_grid" , "pipe" , "orgtbl" , "jira"
+    # "presto" , "pretty" , "psql" , "rst" , "mediawiki" , "moinmoin" , "youtrack" , "html"
+    # "unsafehtml" , "latex" , "latex_raw" , "latex_booktabs" , "latex_longtable" , "textile" , "tsv"
+    print(tabulate.tabulate(table, headers=["Username", "Usage"], tablefmt="pretty"))
 
     html_table = "<p>Usage of all people in 'us' list:<p>" + tabular_table.get_html_string(attributes={"border":"1", "style":"border-collapse: collapse; margin: 25px 0; font-size: 0.9em; font-family: sans-serif; min-width: 400px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);"})
 
     # Send mail to 'us' group
     for person in us:
-        # x = threading.Thread(target=send_mail.sendMail, args=(person[1], person[0], person[2], html_table))
-        # x.start()
         threading.Thread(target=send_mail.sendMail, args=(person[1], person[0], person[2], html_table)).start()
 
     # Send mail to 'not us' group
