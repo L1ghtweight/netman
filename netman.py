@@ -105,7 +105,7 @@ if __name__ == "__main__":
     # "plain" , "simple" , "github" , "grid" , "fancy_grid" , "pipe" , "orgtbl" , "jira"
     # "presto" , "pretty" , "psql" , "rst" , "mediawiki" , "moinmoin" , "youtrack" , "html"
     # "unsafehtml" , "latex" , "latex_raw" , "latex_booktabs" , "latex_longtable" , "textile" , "tsv"
-    print(tabulate.tabulate(table, headers=["Username", "Usage"], tablefmt="pretty"))
+    print(tabulate.tabulate(table, headers=tabular_fields, tablefmt="pretty"))
 
     html_table = "<p>Usage of all people in 'us' list:<p>"
 
