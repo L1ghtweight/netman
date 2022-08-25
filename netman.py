@@ -125,4 +125,4 @@ if __name__ == "__main__":
 
     # Send mail to 'not us' group
     for person in notus:
-        send_mail.sendMail(person[1],person[0],person[2])
+        threading.Thread(target=send_mail.sendMail, args=(person[1], person[0], person[2])).start()
