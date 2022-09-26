@@ -1,3 +1,5 @@
+> **TODO:** README needs to be updated (curl integration)
+
 <p align="center">
     <a href="" target="_blank"><img src="assets/netman-logo-2-cropped-reduced.png" width="400"></a>
 </p>
