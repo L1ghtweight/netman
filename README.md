@@ -1,43 +1,51 @@
-> **TODO:** README needs to be updated (curl integration)
 
 <p align="center">
     <a href="" target="_blank"><img src="assets/netman-logo-2-cropped-reduced.png" width="400"></a>
 </p>
 <p align="center">
     <a href=""><img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="python badge" style="display:block;padding:5px"></a>
-    <a href=""><img src="https://img.shields.io/badge/-selenium-%43B02A?style=for-the-badge&logo=selenium&logoColor=white" alt="python badge" style="display:block;padding:5px"></a>
     
 </p>
 
 
-
 ## About NETMAN
-We know how shitty IUT internet is. To survive, we need to have someone managing out net IDs.
-This script will notify the total internet usage of the user.
+Manually keeping track of the internet usage in IUT is tedious work. Netman is a small tool that does that dull job for us, saving us a few extra minutes to focus on more productive things.
+We can add our credentials and netman will send us our internet usage report via email.
 
 ---
+##  Requirements and Installation
+1. Install [python 3.x](https://www.python.org/downloads/), [pip](https://pip.pypa.io/en/stable/installation/) and [git](https://git-scm.com/downloads) if you don't have them already.
+2. Clone and install the dependencies:
+```bash
+git clone --depth 1 https://github.com/L1ghtweight/netman.git
+cd netman
+pip install -r requirements.txt
+```
+>NOTE: Administrative privileges may be needed to install pip packages in windows.
+4. We'll need a gmail account to send mails. To set up the email:
+* First, enable 2FA from [here](https://myaccount.google.com/security).
+* Then, go to `App Passwords`, select `Mail` and `Windows computer` and hit `Generate`.
+* You will be given a password, copy it.
 
-## Requirements and Installation
-1. Install `python 3.x` and `pip`
-2. `ChromeDriver` is needed. \
-    Download it for Windows from [here](https://chromedriver.chromium.org/downloads). \
-    For Linux: 
-    * ChromeDriver is available in AUR. Run: `paru -S chromedriver`
-    * Available in apt: Run `sudo apt-get install chromium-chromedriver` 
-    * Or download from the official repo. \
-    Run: `wget https://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip && unzip chromedriver_linux64.zip && ./chromedriver`
-3. Run `git clone --depth 1 https://github.com/L1ghtweight/netman.git && cd netman`
-4. Run: `pip install -r requirements.txt`
-5. You'll need a gmail account so that this script can use it for sending mail. 
-Using a throwaway mail is highly recommended.
-~~Log into that account and enable less secure apps from [here](https://myaccount.google.com/lesssecureapps).~~
- Google has stopped "less secure apps" service.  You need to enable 2FA from [here](https://myaccount.google.com/u/3/security). Then create a password for an app for sending mail. You will be given a password for that app.
-6. Now, set the email and password variable in `secrets.py` to the gmail address and the password you got from the last step. 
-To be absolutely sure, kindly go through the code and understand what this script is doing with your password.
-7. Now add IUT internet credentials in `credentials.json`. Make sure you maintain the format.
-8. Now run `python netman.py`.
-> **Note:** You need to be connected to IUT internet so that iusers page is accessible.
-10. Schedule the script to run after certain period to
-get update about your internet usage.
-11. Make sure that `credentials.json` and `secrets.py` is
-safe from prying eyes.
+Google's official guide regarding this step can be found [here](https://support.google.com/accounts/answer/185833?hl=en).
+>NOTE: Using a throwaway mail is highly recommended.
+5. Store your email and password you just copied in the `netman/secrets.py` file.
+6. Add your IUT internet credentials inside the `netman/credentials.json` file.
+* Follow the structure given in the file.
+* Setting the `us` variable to `true` means you will get notified about all of the users' usage through email. Otherwise, you'll get usage of yourself only.
+7. We can now run the script with the command `python netman.py`.
+>NOTE: You need to be connected to IUT internet so that the [iusers](http://10.220.20.12/index.php/home/login) page is accessible.
+
+## Scheduling
+We can schedule the script to get a periodic update.
+#### Windows:
+* For windows we can use the pre-installed `Task Scheduler`. 
+
+#### Linux:
+* For Linux we can use `crontab`. 
+
+## Issues
+As `secrets.py` and `credentials.py` files are not encrypted, it is necessary to keep them safe from prying eyes.
+#### Possible solutions (and why they aren't implemented)
+**Using a database:** Seems like an overkill for such a simple task. <br>
+**Password protecting the files:** Password would be required whenever an instance is run. If used as a scheduled task, this would become a hassle.
