@@ -23,17 +23,20 @@ def getUsageTable():
 
         for user in data:
 
-            username, pwd = data[user]['username'], data[user]['password']
-            email = data[user]['email']
-            usage = getUsage(username, pwd)
-            if data[user]['us'] == True:
-                tabular_table.add_row([username, usage])
-                us.append([username, email, usage])
-            else:
-                notus.append([username, email, usage])
+            try:
+                username, pwd = data[user]['username'], data[user]['password']
+                email = data[user]['email']
+                usage = getUsage(username, pwd)
+                if data[user]['us'] == True:
+                    tabular_table.add_row([username, usage])
+                    us.append([username, email, usage])
+                else:
+                    notus.append([username, email, usage])
 
-            entry = [username, usage]
-            table.append(entry)
+                entry = [username, usage]
+                table.append(entry)
+            except:
+                print("Error occured")
 
     return table
 
