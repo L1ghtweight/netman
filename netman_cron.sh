@@ -2,7 +2,7 @@
 
 # Define the project location
 # example: /home/user/folder/netman/
-PROJECT_LOCATION="/home/labib/codes/projects/netman/"
+PROJECT_LOCATION="path/to/folder/"
 
 # Function to run the job and log timestamp
 run_job() {
