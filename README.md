@@ -42,7 +42,8 @@ We can schedule the script to get a periodic update.
 * For windows we can use the pre-installed `Task Scheduler`. 
 
 #### Linux:
-* For Linux we can use `crontab`. 
+* For Linux we can use `crontab`.
+* Using the `netman_cron.sh` script is recommended.
 
 ## Issues
 As `secrets.py` and `credentials.py` files are not encrypted, it is necessary to keep them safe from prying eyes.
