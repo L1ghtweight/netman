@@ -1,5 +1,6 @@
 #!/bin/python
 
+import sys
 import threading
 import json
 import tabulate
@@ -62,10 +63,14 @@ if __name__ == "__main__":
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);"""
     })
 
-    # Send mail to 'us' group
-    for person in us:
-        threading.Thread(target=send_mail.sendMail, args=(person[1], person[0], person[2], html_table)).start()
+    if "--no-mail" not in sys.argv and "-nm" not in sys.argv:
+        # Send mail to 'us' group
+        for person in us:
+            threading.Thread(target=send_mail.sendMail, args=(person[1], person[0], person[2], html_table)).start()
 
-    # Send mail to 'not us' group
-    for person in notus:
-        threading.Thread(target=send_mail.sendMail, args=(person[1], person[0], person[2])).start()
+        # Send mail to 'not us' group
+        for person in notus:
+            threading.Thread(target=send_mail.sendMail, args=(person[1], person[0], person[2])).start()
+    else:
+        print("Exiting without sending mails.")
+    
