@@ -11,7 +11,6 @@ def getUsage(username, password):
             "Upgrade-Insecure-Requests": "1",
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.5195.102 Safari/537.36",
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-            # 'Accept-Encoding': 'gzip, deflate',
             "Accept-Language": "en-US,en;q=0.9",
             "Connection": "close",
         }
@@ -29,10 +28,8 @@ def getUsage(username, password):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.5195.102 Safari/537.36",
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
             "Referer": "http://10.220.20.12/index.php/home/login",
-            # 'Accept-Encoding': 'gzip, deflate',
             "Accept-Language": "en-US,en;q=0.9",
             "Connection": "close",
-            # 'Cookie': 'ci_session=cookie',
         }
 
         data = "username=" + username + "&password=" + password
@@ -51,17 +48,14 @@ def getUsage(username, password):
 
         rows = table_body.find_all("tr")
 
-        data = []
+        usageData = []
 
         for row in rows:
             cols = row.find_all("td")
             cols = [ele.text.strip() for ele in cols]
-            data.append([ele for ele in cols if ele])  # Get rid of empty values
+            usageData.append([ele for ele in cols if ele])  # Get rid of empty values
 
-        # for e in data:
-        #     print(*e)
+        usageData = usageData[5][1].strip(' Minute')
+        usageData = int(usageData)
 
-        data = data[5][1].strip(' Minute')
-        data = int(data)
-
-        return data
+        return usageData
