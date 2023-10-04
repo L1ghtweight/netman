@@ -41,6 +41,9 @@ def getUsageTable():
 
     return table
 
+def getGroups():
+    pass
+
 if __name__ == "__main__":
     print("Getting usage...")
     table = getUsageTable()
@@ -62,6 +65,8 @@ if __name__ == "__main__":
         min-width: 400px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);"""
     })
+
+    groups = getGroups()
 
     if "--no-mail" not in sys.argv and "-nm" not in sys.argv:
         # Send mail to 'us' group
