@@ -29,8 +29,28 @@ pip install -r requirements.txt
 
 Google's official guide regarding this step can be found [here](https://support.google.com/accounts/answer/185833?hl=en).
 >NOTE: Using a throwaway mail is highly recommended.
-5. Store your email and password you just copied in the `netman/secrets.py` file.
-6. Add your IUT internet credentials inside the `netman/credentials.json` file.
+5. Inside the `netman` folder, create a file named ```secrets.py``` and store your email and password you just copied in this format:
+```python
+email = "email@gmail.com"
+password = "password"
+```
+6. Inside the `netman` folder, create the a file named ```credentials.json``` and add your IUT internet credentials inside the file in the following format:
+```json
+{
+    "name1": {
+        "username": "username1",
+        "password": "password1",
+        "email": "email@email",
+        "us": true
+    },
+    "name2": {
+        "username": "username2",
+        "password": "password2",
+        "email": "email@email",
+        "us": false
+    }
+}
+```
 * Follow the structure given in the file.
 * Setting the `us` variable to `true` means you will get notified about all of the users' usage through email. Otherwise, you'll get usage of yourself only.
 7. We can now run the script with the command `python netman.py`.
